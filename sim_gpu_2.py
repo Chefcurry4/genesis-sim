@@ -52,7 +52,7 @@ terrain = scene.add_entity(
             ['flat_terrain', 'flat_terrain', 'sloped_terrain']
         ]
     ),
-    surface=gs.surfaces.Static(color=(0.3, 0.3, 0.3)),
+    surface=gs.surfaces.Terrain(color=(0.3, 0.3, 0.3)),
 )
 
 # --- Sistema fluido ottimizzato ---
