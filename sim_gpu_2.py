@@ -46,7 +46,11 @@ terrain = scene.add_entity(
         subterrain_size=(15.0, 15.0),
         horizontal_scale=0.3,
         vertical_scale=0.2,
-        # roughness=0.5
+        subterrain_types=[
+            ['flat_terrain', 'sloped_terrain', 'flat_terrain'],
+            ['sloped_terrain', 'flat_terrain', 'sloped_terrain'],
+            ['flat_terrain', 'flat_terrain', 'sloped_terrain']
+        ]
     ),
     surface=gs.surfaces.Default(color=(0.3, 0.3, 0.3)),
 )
