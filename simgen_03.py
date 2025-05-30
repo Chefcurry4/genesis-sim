@@ -1,5 +1,4 @@
-from genesis.scene import Scene
-from genesis import Backend, options, morphs, surfaces, materials
+import genesis as gs
 import csv
 import os
 import numpy as np
@@ -16,13 +15,13 @@ CSV_BUFFER_SIZE = 500
 csv_buffer = []
 
 # --- Inizializzazione scena con backend esplicito ---
-scene = Scene(
-    backend=Backend.CUDA,
-    sim_options=options.SimOptions(
+scene = gs.Scene(
+    backend=gs.Backend.CUDA,  # <-- usa la GPU
+    sim_options=gs.options.SimOptions(
         dt=1.5e-3,
         substeps=10
     ),
-    sph_options=options.SPHOptions(
+    sph_options=gs.options.SPHOptions(
         lower_bound=(-30.0, -50.0, -30.0),
         upper_bound=(100.0, 50.0, 30.0),
         particle_size=0.01
@@ -32,7 +31,7 @@ scene = Scene(
 
 # --- Terreno semplificato ---
 terrain = scene.add_entity(
-    morph=morphs.Terrain(
+    morph=gs.morphs.Terrain(
         n_subterrains=(3, 3),
         subterrain_size=(15.0, 15.0),
         horizontal_scale=0.3,
@@ -43,29 +42,29 @@ terrain = scene.add_entity(
             ['flat_terrain', 'flat_terrain', 'sloped_terrain']
         ]
     ),
-    surface=surfaces.Static(color=(0.3, 0.3, 0.3))
+    surface=gs.surfaces.Static(color=(0.3, 0.3, 0.3))
 )
 
 # --- Sistema fluido ottimizzato ---
 fluid_block = scene.add_entity(
-    material=materials.SPH.Liquid(
+    material=gs.materials.SPH.Liquid(
         sampler='poisson',
         sampling_ratio=0.9
     ),
-    morph=morphs.Box(
+    morph=gs.morphs.Box(
         pos=(30.0, 0.0, 8.0),
         size=(15.0, 15.0, 6.0)
     ),
-    surface=surfaces.Default(color=(0.4, 0.8, 1.0))
+    surface=gs.surfaces.Default(color=(0.4, 0.8, 1.0))
 )
 
 # --- Ostacolo base ---
 scene.add_entity(
-    morph=morphs.Sphere(
+    morph=gs.morphs.Sphere(
         pos=(50.0, 0.0, 5.0),
         radius=5.0
     ),
-    surface=surfaces.Rigid()
+    surface=gs.surfaces.Rigid()
 )
 
 # --- Build della scena ---
