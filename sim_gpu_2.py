@@ -15,11 +15,11 @@ CSV_BUFFER_SIZE = 500
 csv_buffer = []
 
 # --- Inizializzazione GPU corretta ---
-gs.init(
-    backend=gs.cuda,
-    debug=False,
-    precision='32'
-)  # Rimossa allocazione memoria esplicita
+# gs.init(
+   # backend=gs.cuda,
+   # debug=False,
+   # precision='32'
+#)  
 
 # --- Scena bilanciata ---
 scene = gs.Scene(
