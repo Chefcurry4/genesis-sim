@@ -26,15 +26,15 @@ scene = gs.Scene(
     sim_options=gs.options.SimOptions(
         dt=1.5e-3,
         substeps=10,
-        solver_iterations=3
+        # solver_iterations=3
     ),
     sph_options=gs.options.SPHOptions(
         lower_bound=(-30.0, -50.0, -30.0),
         upper_bound=(100.0, 50.0, 30.0),
         particle_size=0.01,
-        rest_density=800,
-        surface_tension=0.05,
-        viscosity=0.005
+        # rest_density=800,
+        # surface_tension=0.05,
+        # viscosity=0.005
     ),
     show_viewer=False
 )
@@ -46,7 +46,7 @@ terrain = scene.add_entity(
         subterrain_size=(15.0, 15.0),
         horizontal_scale=0.3,
         vertical_scale=0.2,
-        roughness=0.5
+        # roughness=0.5
     ),
     surface=gs.surfaces.Default(color=(0.3, 0.3, 0.3)),
 )
