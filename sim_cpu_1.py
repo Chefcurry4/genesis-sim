@@ -28,18 +28,31 @@ scene = gs.Scene(
 )
 
 # --- Terrain setup ---
+
+# terrain = scene.add_entity(
+#     morph=gs.morphs.Terrain(
+#         n_subterrains=(1, 1),
+#         subterrain_size=(10.0, 10.0),
+#         subterrain_types='sloped_terrain',
+#         horizontal_scale=0.25,
+#         vertical_scale=0.05,
+#         randomize=False
+#     ),
+#     surface=gs.surfaces.Default(color=(0.5, 0.5, 0.5)
+#     ),
+# )     
+
 terrain = scene.add_entity(
     morph=gs.morphs.Terrain(
-        n_subterrains=(1, 1),
-        subterrain_size=(10.0, 10.0),
-        subterrain_types='sloped_terrain',
+        n_subterrains=(1, 2),  # 2 subterrain in orizzontale
+        subterrain_size=(10.0, 10.0),  # ognuno 10x10 (totale 20x10)
+        subterrain_types=[['flat_terrain', 'sloped_terrain']],  # primo flat, secondo slope
         horizontal_scale=0.25,
         vertical_scale=0.05,
         randomize=False
     ),
-    surface=gs.surfaces.Default(color=(0.5, 0.5, 0.5)
-    ),
-)       
+    surface=gs.surfaces.Default(color=(0.5, 0.5, 0.5)),
+)
 
 # --- Fluid block initialization ---
 water_block = scene.add_entity(
