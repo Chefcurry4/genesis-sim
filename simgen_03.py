@@ -1,4 +1,5 @@
 import genesis as gs
+from genesis import Scene
 import csv
 import os
 import numpy as np
