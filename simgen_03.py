@@ -72,15 +72,6 @@ fluid_block = scene.add_entity(
     surface=surfaces.Default(color=(0.4, 0.8, 1.0))
 )
 
-# --- Ostacolo base ---
-scene.add_entity(
-    morph=morphs.Sphere(
-        pos=(50.0, 0.0, 5.0),
-        radius=5.0
-    ),
-    surface=surfaces.Rigid()
-)
-
 # --- Costruzione scena ---
 scene.build()
 
