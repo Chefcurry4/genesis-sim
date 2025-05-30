@@ -1,4 +1,5 @@
-from genesis import Scene, Backend, options, morphs, surfaces, materials
+from genesis.scene import Scene
+from genesis import Backend, options, morphs, surfaces, materials
 import csv
 import os
 import numpy as np
